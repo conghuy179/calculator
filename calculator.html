@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="calculator.css">
-    <title>Document</title>
+    <title>Deluxe Calculator</title>
 </head>
 
 <body>
@@ -14,36 +14,57 @@
         <div id="display"></div>
         <div class="calculatorName">Deluxe Desktop Calculator</div>
         <div class="buttons">
-            <button onclick="dis(7)">7</button>
-            <button onclick="dis(8)">8</button>
-            <button onclick="dis(9)">9</button>
-            <button onclick="dis(%)">%</button>
-            <button onclick="dis(/)">/</button>
-            <button onclick="dis(4)">4</button>
-            <button onclick="dis(5)">5</button>
-            <button onclick="dis(6)">6</button>
-            <button onclick="dis(*)">x</button>
-            <button onclick="dis(/)">:</button>
-            <button onclick="dis(1)">1</button>
-            <button onclick="dis(2)">2</button>
-            <button onclick="dis(3)">3</button>
-            <button id="plusButton" onclick="dis(+)">+</button>
-            <button onclick="dis(-)">-</button>
-            <button onclick="dis(0)">0</button>
-            <button id="onButton" onclick="clr()">ON</button>
-            <button onclick="dis(.)">.</button>
-            <button onclick="dis(=)">=</button>
+            <button id="button0" onclick="show('0')">0</button>
+            <button id="button1" onclick="show('1')">1</button>
+            <button id="button2" onclick="show('2')">2</button>
+            <button id="button3" onclick="show('3')">3</button>
+            <button id="button4" onclick="show('4')">4</button>
+            <button id="button5" onclick="show('5')">5</button>
+            <button id="button6" onclick="show('6')">6</button>
+            <button id="button7" onclick="show('7')">7</button>
+            <button id="button8" onclick="show('8')">8</button>
+            <button id="button9" onclick="show('9')">9</button>
+            <button id="plus" onclick="show('+')">+</button>
+            <button id="minus" onclick="show('-')">-</button>
+            <button id="multiply" onclick="show('*')">x</button>
+            <button id="divide" onclick="show('/')">:</button>
+            <button id="clear" onclick="clearScreen()">C</button>
+            <button id="equal" onclick="calculate()">=</button>
         </div>
     </div>
 
     <script>
-        //  const dis();
-        let display = document.getElementbyId('display');
-        let buttons = Array.from(document.getElementsByClassName('button'));
+        let display = document.getElementById('display');
+
         // function bam button hien tren display
-        function dis(a) = {
-            document.getElementById(display).value += a
+        function show(a) {
+            display.textContent += a;
         }
+
+        //Tinh phep tinh qua dau' "="
+        function calculate() {
+            console.log("calculated is called");
+            try {
+                // thu tinh ket qua, neu dung thi hien thi
+                let result = eval(display.textContent);
+                display.textContent = result;
+            } catch (err) {
+                // xuat hien loi, hien thi Invalid Expression
+                display.textContent = "Invalid Expression";
+            }
+        }
+
+        //Xoa man hinh
+        function clearScreen() {
+            console.log("clear is called");
+            display.textContent = "";
+        }
+
+        // bang bang bang
+
+        // document.getElementById("equal").addEventListener("click", function showBang() {
+        //     alert("Bang Bang Bang");
+        // });
     </script>
 </body>
 
